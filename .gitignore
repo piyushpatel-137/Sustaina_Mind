@@ -1,0 +1,25 @@
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend models (large files)
+backend/carbon_model.pkl
+backend/encoder.pkl.pkl
+
+# Logs
+*.log
+
+# Node modules (if frontend uses Node)
+frontend/node_modules/
