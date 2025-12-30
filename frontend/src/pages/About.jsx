@@ -5,7 +5,6 @@ export default function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-green-100">
 
-      {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="bg-emerald-600 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
@@ -15,14 +14,13 @@ export default function About() {
             About SustainaMind
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
-            SustainaMind empowers individuals to understand and reduce their carbon footprint using AI-powered predictions. 
+            SustainaMind empowers individuals to understand and reduce their carbon footprint using AI-powered predictions.
             Our platform provides personalized insights based on your daily habits, energy use, diet, and transportation choices.
           </p>
-         
+
         </div>
       </section>
 
-      {/* Technology Stack Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Technology Stack</h2>
@@ -53,7 +51,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Data & AI Details */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">AI & Data Workflow</h2>
@@ -103,7 +100,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-600 to-teal-600">
         <div className="max-w-4xl mx-auto text-center">
           <Users className="w-16 h-16 text-white mx-auto mb-6" />
@@ -112,11 +108,6 @@ export default function About() {
           </h2>
           <p className="text-xl text-emerald-100 mb-8 leading-relaxed">
             Understand your carbon footprint, take action, and join millions of users making a real environmental impact.
-          </p>
-
-            {/* Write the Author Name in right corener */}
-          <p className="text-sm text-emerald-100 mb-8 leading-relaxed">
-            Author: Hridyanshi Jain
           </p>
 
         </div>

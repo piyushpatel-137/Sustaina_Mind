@@ -9,23 +9,19 @@ import pickle
 import pandas as pd
 import numpy as np
 import traceback
-import json # New Import
+import json 
 
-# Database Imports
 from database import engine, SessionLocal, Base
 from models import User, SearchHistory
 
-# Create Tables
 Base.metadata.create_all(bind=engine)
 
-# ---------- Security Config ----------
 SECRET_KEY = "your_super_secret_key_change_this"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
-# ---------- Pydantic Schemas ----------
 class UserCreate(BaseModel):
     name: str
     username: str
@@ -82,7 +78,6 @@ class CarbonInput(BaseModel):
     Cook_Stove: int
     user_id: str | None = None
 
-# ---------- Load model and encoders ----------
 try:
     with open("carbon_model.pkl", "rb") as f:
         model = pickle.load(f)
@@ -95,7 +90,6 @@ except Exception as e:
     print(f"Warning: Model files not found. Prediction will fail. Error: {e}")
     model = None
 
-# ---------- Dependency ----------
 def get_db():
     db = SessionLocal()
     try:
@@ -103,7 +97,6 @@ def get_db():
     finally:
         db.close()
 
-# ---------- Helper Functions ----------
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
@@ -117,7 +110,6 @@ def create_access_token(data: dict):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-# ---------- FastAPI app ----------
 app = FastAPI(title="Carbon Footprint Prediction API")
 
 app.add_middleware(
@@ -128,7 +120,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ---------- Auth Routes ----------
 @app.post("/signup", response_model=Token)
 def signup(user: UserCreate, db: Session = Depends(get_db)):
     try:
@@ -177,7 +168,7 @@ def forgot_password(data: ForgotPassword, db: Session = Depends(get_db)):
 def change_password(data: ChangePassword, db: Session = Depends(get_db)):
     user = db.query(User).filter(User.username == data.username).first()
     if not user:
-         raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="User not found")
     
     if not verify_password(data.current_password, user.hashed_password):
         raise HTTPException(status_code=400, detail="Incorrect current password")
@@ -201,7 +192,6 @@ def clear_history(username: str, db: Session = Depends(get_db)):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     
-    # Delete all history for this user
     db.query(SearchHistory).filter(SearchHistory.user_id == user.id).delete()
     db.commit()
     return {"message": "History cleared successfully"}
@@ -211,7 +201,6 @@ def predict_footprint(data: CarbonInput, db: Session = Depends(get_db)):
     if model is None:
         raise HTTPException(status_code=500, detail="Model files not loaded")
 
-    # Convert input to DataFrame
     input_data_dict = {
         "Body Type": data.Body_Type,
         "Sex": data.Sex,
@@ -248,16 +237,14 @@ def predict_footprint(data: CarbonInput, db: Session = Depends(get_db)):
     prediction = model.predict(X_final)[0]
     result_value = float(prediction)
 
-    # Save to History with Details
     if data.user_id:
         user = db.query(User).filter(User.username == data.user_id).first()
         if user:
-            # Convert all input data to JSON string to store in DB
             details_json = json.dumps(data.dict(exclude={'user_id'}))
             new_history = SearchHistory(
                 carbon_value=result_value, 
                 user_id=user.id,
-                details=details_json # Store inputs
+                details=details_json
             )
             db.add(new_history)
             db.commit()

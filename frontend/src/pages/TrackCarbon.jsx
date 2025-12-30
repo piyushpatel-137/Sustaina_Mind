@@ -55,18 +55,17 @@ export default function TrackCarbon() {
     setLoading(true);
     setError('');
 
-    const username = localStorage.getItem('username'); // Get logged in user
+    const username = localStorage.getItem('username');
 
     try {
       const response = await fetch('http://localhost:8000/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Optional: Auth Token bhej sakte hain agar secure karna hai endpoint ko
         },
         body: JSON.stringify({
           ...formData,
-          user_id: username, // Send username to save history
+          user_id: username,
           Vehicle_Type: formData.Transport === 'public' ? null : formData.Vehicle_Type,
           Monthly_Grocery_Bill: parseFloat(formData.Monthly_Grocery_Bill) || 0,
           Vehicle_Monthly_Distance_Km: parseFloat(formData.Vehicle_Monthly_Distance_Km) || 0,
@@ -102,7 +101,6 @@ export default function TrackCarbon() {
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-green-100">
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="bg-emerald-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <Calculator className="w-10 h-10 text-white" />
@@ -112,11 +110,8 @@ export default function TrackCarbon() {
             Calculate your environmental impact and discover ways to reduce your carbon footprint for a more sustainable future.
           </p>
         </div>
-
-        {/* Main Content */}
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Personal Information */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                 <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -157,8 +152,6 @@ export default function TrackCarbon() {
                 </div>
               </div>
             </div>
-
-            {/* Lifestyle */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                 <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -229,7 +222,6 @@ export default function TrackCarbon() {
               </div>
             </div>
 
-            {/* Energy & Home */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                 <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -298,7 +290,6 @@ export default function TrackCarbon() {
               </div>
             </div>
 
-            {/* Transportation */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                 <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -372,7 +363,6 @@ export default function TrackCarbon() {
               </div>
             </div>
 
-            {/* Waste & Consumption */}
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
                 <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3">
@@ -423,7 +413,6 @@ export default function TrackCarbon() {
                 </div>
               </div>
 
-              {/* Recycling */}
               <div className="mt-6">
                 <label className="block text-sm font-medium text-gray-700 mb-4">Recycling Habits</label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -448,7 +437,6 @@ export default function TrackCarbon() {
                 </div>
               </div>
 
-              {/* Cooking Methods */}
               <div className="mt-6">
                 <label className="block text-sm font-medium text-gray-700 mb-4">Cooking Methods Used</label>
                 <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -475,7 +463,6 @@ export default function TrackCarbon() {
               </div>
             </div>
 
-            {/* Submit Button */}
             <div className="flex justify-center pt-6">
               <button
                 type="submit"
@@ -498,7 +485,6 @@ export default function TrackCarbon() {
           </form>
         </div>
 
-        {/* Error Message */}
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
             <div className="flex items-center">
@@ -508,7 +494,6 @@ export default function TrackCarbon() {
           </div>
         )}
 
-        {/* Results */}
         {prediction && (
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="text-center">

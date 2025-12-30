@@ -19,7 +19,6 @@ class SearchHistory(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     carbon_value = Column(Float)
-    # New column to store input details (JSON string)
     details = Column(String) 
     timestamp = Column(DateTime, default=datetime.datetime.utcnow)
     user_id = Column(Integer, ForeignKey("users.id"))

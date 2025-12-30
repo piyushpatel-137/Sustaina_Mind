@@ -9,7 +9,6 @@ import Signup from './pages/Signup.jsx'
 import Profile from './pages/Profile.jsx'
 import ForgotPassword from './pages/ForgotPassword.jsx'
 
-// Protected Route Component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
   if (!token) {

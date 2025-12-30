@@ -48,7 +48,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-green-100">
-      {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
@@ -82,7 +81,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Carbon Facts Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -108,7 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What is Carbon Footprint Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -166,7 +163,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sustainable Living Tips */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -193,7 +189,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Eye-Opening Facts Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
@@ -231,7 +226,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-emerald-600 to-teal-600">
         <div className="max-w-4xl mx-auto text-center">
           <Users className="w-16 h-16 text-white mx-auto mb-6" />
@@ -255,7 +249,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Stats Footer */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">

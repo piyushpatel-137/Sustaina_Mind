@@ -7,14 +7,12 @@ export default function Profile() {
     const [passwordData, setPasswordData] = useState({ current_password: '', new_password: '' });
     const [msg, setMsg] = useState({ type: '', text: '' });
 
-    // State for Details Modal
     const [selectedHistory, setSelectedHistory] = useState(null);
 
     const username = localStorage.getItem('username');
     const name = localStorage.getItem('name');
     const email = localStorage.getItem('email');
 
-    // Fetch History
     const fetchHistory = async () => {
         try {
             const response = await fetch(`http://localhost:8000/history/${username}`);
@@ -31,7 +29,6 @@ export default function Profile() {
         if (username) fetchHistory();
     }, [username]);
 
-    // Change Password
     const handleChangePassword = async (e) => {
         e.preventDefault();
         setMsg({ type: '', text: '' });
@@ -59,7 +56,6 @@ export default function Profile() {
         }
     };
 
-    // Delete History
     const handleClearHistory = async () => {
         if (!window.confirm("Are you sure you want to delete all history? This cannot be undone.")) return;
 
@@ -82,7 +78,6 @@ export default function Profile() {
         <div className="min-h-screen bg-emerald-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-8">
 
-                {/* Profile Header & Settings Toggle */}
                 <div className="bg-white shadow rounded-lg p-6 flex justify-between items-center">
                     <div className="flex items-center space-x-4">
                         <div className="bg-emerald-100 p-4 rounded-full">
@@ -104,14 +99,12 @@ export default function Profile() {
                     </button>
                 </div>
 
-                {/* Global Messages */}
                 {msg.text && (
                     <div className={`p-4 rounded-lg shadow ${msg.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
                         {msg.text}
                     </div>
                 )}
 
-                {/* Settings Section (Collapsible) */}
                 {showSettings && (
                     <div className="bg-white shadow rounded-lg p-6 animate-in slide-in-from-top-4 duration-300">
                         <h2 className="text-xl font-semibold text-gray-900 mb-6 flex items-center border-b pb-2">
@@ -120,7 +113,6 @@ export default function Profile() {
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Change Password */}
                             <div>
                                 <h3 className="font-medium text-gray-900 mb-3 flex items-center">
                                     <Lock className="w-4 h-4 mr-2" /> Change Password
@@ -148,7 +140,6 @@ export default function Profile() {
                                 </form>
                             </div>
 
-                            {/* Danger Zone */}
                             <div>
                                 <h3 className="font-medium text-red-600 mb-3 flex items-center">
                                     <Trash2 className="w-4 h-4 mr-2" /> Danger Zone
@@ -169,7 +160,6 @@ export default function Profile() {
                     </div>
                 )}
 
-                {/* History Section */}
                 <div className="bg-white shadow rounded-lg p-6">
                     <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center border-b pb-2">
                         <History className="w-5 h-5 mr-2 text-emerald-600" />
@@ -197,7 +187,6 @@ export default function Profile() {
                                             </div>
                                         </div>
 
-                                        {/* View Details Button */}
                                         {item.details && (
                                             <button
                                                 onClick={() => setSelectedHistory(item)}
@@ -215,7 +204,6 @@ export default function Profile() {
 
             </div>
 
-            {/* Detail Modal */}
             {selectedHistory && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
                     <div className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col">
