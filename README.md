@@ -149,6 +149,6 @@ Input Features: Body Type, Diet, Social Activity, Transport Mode, Grocery Bill, 
 Processing:
 Categorical data (e.g., "Vegan", "Car") is encoded using OneHotEncoder.
 Missing values are handled dynamically.
-Accuracy: The Random Forest algorithm ensures robust predictions by averaging multiple decision trees.
+Accuracy: The Random Forest algorithm ensures robust predictions by averaging multiple decision tree.
 
 ---
