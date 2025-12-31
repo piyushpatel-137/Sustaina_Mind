@@ -143,8 +143,8 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-6">Average Carbon Footprints</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center p-4 bg-white/20 rounded-lg backdrop-blur-sm">
-                  <span className="font-medium">USA</span>
-                  <span className="font-bold">16.0 tons/year</span>
+                  <span className="font-medium">INDIA</span>
+                  <span className="font-bold">26.0 tons/year</span>
                 </div>
                 <div className="flex justify-between items-center p-4 bg-white/20 rounded-lg backdrop-blur-sm">
                   <span className="font-medium">Global Average</span>
